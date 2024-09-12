@@ -25,7 +25,7 @@ export class StorageService {
           expiryInMillisecond = JSON.parse(stringifiedValue);
         }
         const key = expiryKey.replace('_EXPIRY_TIMESTAMP_IN_MILLISECOND', '');
-        const expiryTimeout = expiryInMillisecond - Date.now();
+        const expiryTimeout = Math.max(expiryInMillisecond - Date.now(), 0);
         setTimeout(() => {
           localStorage.removeItem(expiryKey as any);
           localStorage.removeItem(key as any);
