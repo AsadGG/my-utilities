@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-type Key = 'USER'
+type Key = 'USER';
 
 function addKeyPrefix(key: string) {
   const prefix = 'APP';
@@ -19,7 +19,7 @@ export class StorageService {
     Object.keys(localStorage)
       .filter((key) => key.includes(`_EXPIRY_TIMESTAMP_IN_MILLISECOND`))
       .forEach((expiryKey) => {
-        const stringifiedValue = localStorage.getItem(expiryKey as any);
+        const stringifiedValue = localStorage.getItem(expiryKey);
         let expiryInMillisecond = 0;
         if (stringifiedValue) {
           expiryInMillisecond = JSON.parse(stringifiedValue);
@@ -27,8 +27,8 @@ export class StorageService {
         const key = expiryKey.replace('_EXPIRY_TIMESTAMP_IN_MILLISECOND', '');
         const expiryTimeout = Math.max(expiryInMillisecond - Date.now(), 0);
         setTimeout(() => {
-          localStorage.removeItem(expiryKey as any);
-          localStorage.removeItem(key as any);
+          localStorage.removeItem(expiryKey);
+          localStorage.removeItem(key);
         }, expiryTimeout);
       });
   }
@@ -62,7 +62,7 @@ export class StorageService {
     localStorage.setItem(newKey, stringifiedValue);
 
     if (expiryInMillisecond) {
-      const expiryKeyKey = `${newKey}_EXPIRY_TIMESTAMP_IN_MILLISECOND` as any;
+      const expiryKeyKey = `${newKey}_EXPIRY_TIMESTAMP_IN_MILLISECOND`;
       const expiryTimestamp = Date.now() + expiryInMillisecond;
       const stringifiedTimestamp = JSON.stringify(expiryTimestamp);
       localStorage.setItem(expiryKeyKey, stringifiedTimestamp);
