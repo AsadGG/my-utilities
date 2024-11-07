@@ -1,0 +1,28 @@
+// cron.timer
+[Unit]
+Description=CRON Timer
+
+[Timer]
+OnCalendar=*-*-* 21:00:00
+
+[Install]
+WantedBy=timers.target
+
+// cron.service
+[Unit]
+StartLimitIntervalSec=60
+StartLimitBurst=4
+Description=CRON Service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /etc/systemd/system/cron.sh
+
+[Install]
+WantedBy=multi-user.target
+
+// cron.sh
+echo "$(date)" >> /var/log/cron.log;
+curl -S -X "POST" "http://localhost:3800/api/cron" -H "Cron-Secret: WeqGG2w7hBmGe3fDj9iYOBQYlea4b3RMdbisA5WvSFLmJtKWzi" -H "accept: application/json" -d "" >> /var/log/cron.log;
+echo >> /var/log/cron.log;
+
