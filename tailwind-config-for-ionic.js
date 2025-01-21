@@ -4,12 +4,11 @@ const {
   default: flattenColorPalette,
 } = require('tailwindcss/lib/util/flattenColorPalette');
 
-/** @type {import('tailwindcss').Config} */
-
 function withOpacity(value) {
   return typeof value === 'function' ? value({ opacityValue: 1 }) : value;
 }
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
   plugins: [
