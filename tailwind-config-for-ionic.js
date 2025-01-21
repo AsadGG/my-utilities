@@ -1,175 +1,181 @@
+
 const plugin = require('tailwindcss/plugin');
 const {
   default: flattenColorPalette,
 } = require('tailwindcss/lib/util/flattenColorPalette');
 
 /** @type {import('tailwindcss').Config} */
+
+function withOpacity(value) {
+  return typeof value === 'function' ? value({ opacityValue: 1 }) : value;
+}
+
 module.exports = {
-  content: ['./src/**/*.{html,ts}'],,
+  content: ['./src/**/*.{html,ts}'],
   plugins: [
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
           'ion-text': (value) => ({
-            '--color': value,
+            '--color': withOpacity(value),
           }),
           'ion-text-activated': (value) => ({
-            '--color-activated': value,
+            '--color-activated': withOpacity(value),
           }),
           'ion-text-active': (value) => ({
-            '--color-active': value,
+            '--color-active': withOpacity(value),
           }),
           'ion-text-checked': (value) => ({
-            '--color-checked': value,
+            '--color-checked': withOpacity(value),
           }),
           'ion-text-focused': (value) => ({
-            '--color-focused': value,
+            '--color-focused': withOpacity(value),
           }),
           'ion-text-hover': (value) => ({
-            '--color-hover': value,
+            '--color-hover': withOpacity(value),
           }),
           'ion-text-selected': (value) => ({
-            '--color-selected': value,
+            '--color-selected': withOpacity(value),
           }),
           'ion-border-color': (value) => ({
-            '--border-color': value,
+            '--border-color': withOpacity(value),
           }),
           'ion-border-color-checked': (value) => ({
-            '--border-color-checked': value,
+            '--border-color-checked': withOpacity(value),
           }),
           'ion-ripple-color': (value) => ({
-            '--ripple-color': value,
+            '--ripple-color': withOpacity(value),
           }),
           'ion-track-bg': (value) => ({
-            '--track-background': value,
+            '--track-background': withOpacity(value),
           }),
           'ion-track-bg-checked': (value) => ({
-            '--track-background-checked': value,
+            '--track-background-checked': withOpacity(value),
           }),
 
           'ion-bg': (value) => ({
-            '--background': value,
+            '--background': withOpacity(value),
           }),
           'ion-bg-activated': (value) => ({
-            '--background-activated': value,
+            '--background-activated': withOpacity(value),
           }),
           'ion-bg-checked': (value) => ({
-            '--background-checked': value,
+            '--background-checked': withOpacity(value),
           }),
           'ion-bg-focused': (value) => ({
-            '--background-focused': value,
+            '--background-focused': withOpacity(value),
           }),
           'ion-bg-hover': (value) => ({
-            '--background-hover': value,
+            '--background-hover': withOpacity(value),
           }),
           'ion-bar-bg': (value) => ({
-            '--bar-background': value,
+            '--bar-background': withOpacity(value),
           }),
           'ion-bar-bg-active': (value) => ({
-            '--bar-background-active': value,
+            '--bar-background-active': withOpacity(value),
           }),
           'ion-button-bg': (value) => ({
-            '--button-background': value,
+            '--button-background': withOpacity(value),
           }),
           'ion-button-bg-activated': (value) => ({
-            '--button-background-activated': value,
+            '--button-background-activated': withOpacity(value),
           }),
           'ion-button-bg-focused': (value) => ({
-            '--button-background-focused': value,
+            '--button-background-focused': withOpacity(value),
           }),
           'ion-button-bg-hover': (value) => ({
-            '--button-background-hover': value,
+            '--button-background-hover': withOpacity(value),
           }),
           'ion-button-bg-selected': (value) => ({
-            '--button-background-selected': value,
+            '--button-background-selected': withOpacity(value),
           }),
           'ion-checkbox-bg': (value) => ({
-            '--checkbox-background': value,
+            '--checkbox-background': withOpacity(value),
           }),
           'ion-checkbox-bg-checked': (value) => ({
-            '--checkbox-background-checked': value,
+            '--checkbox-background-checked': withOpacity(value),
           }),
           'ion-handle-bg': (value) => ({
-            '--handle-background': value,
+            '--handle-background': withOpacity(value),
           }),
           'ion-handle-bg-checked': (value) => ({
-            '--handle-background-checked': value,
+            '--handle-background-checked': withOpacity(value),
           }),
           'ion-highlight-bg': (value) => ({
-            '--highlight-background': value,
+            '--highlight-background': withOpacity(value),
           }),
           'ion-knob-bg': (value) => ({
-            '--knob-background': value,
+            '--knob-background': withOpacity(value),
           }),
           'ion-pin-bg': (value) => ({
-            '--pin-background': value,
+            '--pin-background': withOpacity(value),
           }),
           'ion-progress-bg': (value) => ({
-            '--progress-background': value,
+            '--progress-background': withOpacity(value),
           }),
           'ion-wheel-highlight-bg': (value) => ({
-            '--wheel-highlight-background': value,
+            '--wheel-highlight-background': withOpacity(value),
           }),
 
           'ion-button-color': (value) => ({
-            '--button-color': value,
+            '--button-color': withOpacity(value),
           }),
           'ion-button-color-activated': (value) => ({
-            '--button-color-activated': value,
+            '--button-color-activated': withOpacity(value),
           }),
           'ion-button-color-disabled': (value) => ({
-            '--button-color-disabled': value,
+            '--button-color-disabled': withOpacity(value),
           }),
           'ion-button-color-focused': (value) => ({
-            '--button-color-focused': value,
+            '--button-color-focused': withOpacity(value),
           }),
           'ion-button-color-hover': (value) => ({
-            '--button-color-hover': value,
+            '--button-color-hover': withOpacity(value),
           }),
           'ion-button-color-selected': (value) => ({
-            '--button-color-selected': value,
+            '--button-color-selected': withOpacity(value),
           }),
           'ion-cancel-button-color': (value) => ({
-            '--cancel-button-color': value,
+            '--cancel-button-color': withOpacity(value),
           }),
           'ion-checkmark-color': (value) => ({
-            '--checkmark-color': value,
+            '--checkmark-color': withOpacity(value),
           }),
           'ion-clear-button-color': (value) => ({
-            '--clear-button-color': value,
+            '--clear-button-color': withOpacity(value),
           }),
           'ion-title-color': (value) => ({
-            '--title-color': value,
+            '--title-color': withOpacity(value),
           }),
           'ion-spinner-color': (value) => ({
-            '--spinner-color': value,
+            '--spinner-color': withOpacity(value),
           }),
           'ion-placeholder-color': (value) => ({
-            '--placeholder-color': value,
+            '--placeholder-color': withOpacity(value),
           }),
           'ion-pin-color': (value) => ({
-            '--pin-color': value,
+            '--pin-color': withOpacity(value),
           }),
           'ion-detail-icon-color': (value) => ({
-            '--detail-icon-color': value,
+            '--detail-icon-color': withOpacity(value),
           }),
           'ion-highlight-color-focused': (value) => ({
-            '--highlight-color-focused': value,
+            '--highlight-color-focused': withOpacity(value),
           }),
           'ion-highlight-color-invalid': (value) => ({
-            '--highlight-color-invalid': value,
+            '--highlight-color-invalid': withOpacity(value),
           }),
           'ion-highlight-color-valid': (value) => ({
-            '--highlight-color-valid': value,
+            '--highlight-color-valid': withOpacity(value),
           }),
           'ion-icon-color': (value) => ({
-            '--icon-color': value,
+            '--icon-color': withOpacity(value),
           }),
           'ion-indicator-color': (value) => ({
-            '--indicator-color': value,
+            '--indicator-color': withOpacity(value),
           }),
         },
-        { values: flattenColorPalette(theme('colors')) }
+        { type: ['color'], values: flattenColorPalette(theme('colors')) }
       );
     }),
     plugin(function ({ matchUtilities, theme }) {
